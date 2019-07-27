@@ -5,15 +5,15 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 public class MySprite {
-    private int nBMPs;
-    private int iBMP;
-    private Bitmap[] BMPs;
-    private int left;
-    private int top;
-    private int width;
-    private int height;
+    public int nBMPs;
+    public int iBMP;
+    public Bitmap[] BMPs;
+    public int left;
+    public int top;
+    public int width;
+    public int height;
 
-    private MySprite(Bitmap[] bmps, int left, int top, int width, int height)
+    public MySprite(Bitmap[] bmps, int left, int top, int width, int height)
     {
         BMPs = bmps;
         nBMPs = bmps.length;
@@ -29,9 +29,9 @@ public class MySprite {
         this.height = height;
     }
 
-    private int d2 = 1;
+    int d2 = 1;
 
-    private void Update()
+    public void Update()
     {
         iBMP = (iBMP +1) % nBMPs;
         if (State==1)
@@ -42,9 +42,9 @@ public class MySprite {
         }
 
     }
-    private int State = 0;
-    private int d = 0;
-    private void Draw(Canvas canvas)
+    public int State = 0;
+    public int d = 0;
+    public void Draw(Canvas canvas)
     {
         if (State ==0)
             canvas.drawBitmap(BMPs[iBMP], left, top, null);
@@ -60,7 +60,7 @@ public class MySprite {
 
 
 
-    private boolean IsSelected(float x, float y)
+    public boolean IsSelected(float x, float y)
     {
         if (x>=left && x <=left + width && y >= top && y <= top+height)
             return true;
