@@ -2,11 +2,16 @@ package com.example.planter;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +23,11 @@ public class LogInActivity extends AppCompatActivity {
     private TextInputLayout textInputFirstname;
     private TextInputLayout textInputLastname;
 
-    public LinearLayout loginLayout, signupLayout;
+    TextInputEditText LI_passEditText, SU_passEditText;
+    ViewGroup.LayoutParams params;
+    CheckBox checkBox;
+
+    public LinearLayout loginLayout, signupLayout, linearLayout;
     public Button btnSignUp, btnLogIn, btnCheck, btnInsert, btnGo;
     private TextView textView;
 
@@ -30,10 +39,16 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         db = new DatabaseHelper(this);
 
+
         btnLogIn = findViewById(R.id.login);
         btnSignUp = findViewById(R.id.signup);
         signupLayout = findViewById(R.id.SU_layout);
         loginLayout = findViewById(R.id.LI_layout);
+        linearLayout = findViewById(R.id.linear_layout);
+        params = linearLayout.getLayoutParams();
+        params.height = 870;
+        linearLayout.setLayoutParams(params);
+        checkBox = findViewById(R.id.check_terms);
 
         textInputEmail = findViewById(R.id.SU_email);
         textInputFirstname = findViewById(R.id.SU_first);
@@ -42,12 +57,16 @@ public class LogInActivity extends AppCompatActivity {
         textInputUsername = findViewById(R.id.SU_username);
         textInputPass = findViewById(R.id.SU_pass);
         textInputPassLI = findViewById(R.id.LI_pass);
+
+        SU_passEditText = findViewById(R.id.SU_passEdit);
+        SU_passEditText.setTransformationMethod(new PasswordTransformationMethod());
+        LI_passEditText = findViewById(R.id.LI_passEdit);
+        LI_passEditText.setTransformationMethod(new PasswordTransformationMethod());
+
         textInputUsernameLI = findViewById(R.id.LI_username);
-        textView = findViewById(R.id.txt);
 
         btnCheck= findViewById(R.id.btnLogIn);
         btnInsert = findViewById(R.id.btnSignUp);
-        btnGo = findViewById(R.id.btnApp);
 
         btnOnClick();
         toggleLogIn();
@@ -56,10 +75,12 @@ public class LogInActivity extends AppCompatActivity {
 
     //Click button to Sign up or to Log in
     public void btnOnClick() {
-        btnGo.setOnClickListener(new View.OnClickListener() {
+        checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.listPlantUsers(textView);
+                if (checkBox.isChecked()) {
+                    checkBox.setButtonTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
+                }
             }
         });
         btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +96,7 @@ public class LogInActivity extends AppCompatActivity {
                     long val2 = db.addPlantUser(username);
                     if (val > 0) {
                         Toast.makeText(LogInActivity.this, "successful sign up", Toast.LENGTH_SHORT).show();
-                        switchLayoutOnLaunch(btnLogIn, btnSignUp, loginLayout, signupLayout);
+                        switchLayoutOnLaunch(btnLogIn, btnSignUp, loginLayout, signupLayout, 740, View.GONE);
                         textInputUsernameLI.getEditText().setText(username);
                         textInputPassLI.getEditText().setText(password);
                     } else {
@@ -83,7 +104,7 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast.makeText(LogInActivity.this, "log in fail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "sign up fail", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,7 +133,8 @@ public class LogInActivity extends AppCompatActivity {
     //Validate: if the field is not inputted, will raise error
     public boolean validateSignUp(View v) {
 //        if (!validateEmail() | !validatePassword() | !validateName() | !validateUsername() | !validateUsername()) {
-        if (!validatePassword(textInputPass) | !validateUsername(textInputUsername) | !validateEmail()) {
+
+        if (!validatePassword(textInputPass) | !validateUsername(textInputUsername) | !validateEmail() | !validateTerms()) {
             return false;
         }
         return true;
@@ -122,6 +144,15 @@ public class LogInActivity extends AppCompatActivity {
         if (!validatePassword(textInputPassLI) | !validateUsername(textInputUsernameLI)) {
             return false;
         }
+        return true;
+    }
+
+    private boolean validateTerms() {
+        if (!checkBox.isChecked()) {
+            checkBox.setButtonTintList(ContextCompat.getColorStateList(this.getApplicationContext(), R.color.colorAccent));
+            return false;
+        }
+        checkBox.setButtonTintList(ContextCompat.getColorStateList(this.getApplicationContext(), R.color.colorPrimary));
         return true;
     }
 
@@ -163,17 +194,17 @@ public class LogInActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchLayoutOnLaunch(btnSignUp, btnLogIn, signupLayout, loginLayout);
+                switchLayoutOnLaunch(btnSignUp, btnLogIn, signupLayout, loginLayout, 870, View.VISIBLE);
             }
         });
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchLayoutOnLaunch(btnLogIn, btnSignUp, loginLayout, signupLayout);
+                switchLayoutOnLaunch(btnLogIn, btnSignUp, loginLayout, signupLayout, 740, View.GONE);
             }
         });
     }
-    public void switchLayoutOnLaunch(Button btnCur, Button btnPrev, LinearLayout cur, LinearLayout prev) {
+    public void switchLayoutOnLaunch(Button btnCur, Button btnPrev, LinearLayout cur, LinearLayout prev, int height, int visibility) {
         btnCur.setBackgroundResource(R.drawable.topcorner);
         btnCur.setTextColor(Color.parseColor("#000000"));
         if (btnCur == btnSignUp) {
@@ -187,9 +218,11 @@ public class LogInActivity extends AppCompatActivity {
         btnPrev.setBackgroundColor(Color.parseColor("#ffffff"));
         btnPrev.setTextColor(Color.parseColor("#8F8F8F"));
 
-
         cur.setVisibility(View.VISIBLE);
         prev.setVisibility(View.GONE);
+
+        params.height = height;
+        btnInsert.setVisibility(visibility);
     }
 
 }
