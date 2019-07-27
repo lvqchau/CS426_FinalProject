@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F4E0"
+    tools:context=".PlantFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pop_med"
+                android:text="One tree is enough To change the world"
+                android:textColor="#36C1B6"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/pop_reg"
+                android:text="Water trees to watch ads."
+                />
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pop_reg"
+                android:text="Money comes from ads will be funded towards saving trees ✿."
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drag to water"
+                    android:textColor="#F85C65"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="120dp"
+                    android:fontFamily="@font/pop_semibold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:foregroundGravity="center_vertical"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="37dp"
+        >
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant0"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#7F9F2C"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant1"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant2"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant3"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant4"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant5"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant6"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant7"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant8"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant9"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/plant10"
+            android:layout_width="8dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginHorizontal="2dp"
+            app:cardBackgroundColor="#DDB87E"
+            app:cardElevation="0dp"/>
+
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="320dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="210dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/pop_reg"
+                android:text="You have planted"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/total_plant_count"
+                android:textColor="#9AC423"
+                android:textSize="18sp"
+                android:fontFamily="@font/pop_med"
+                android:layout_height="wrap_content"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/pop_reg"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="trees"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="248dp"
+        android:layout_marginTop="490dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <ImageButton
+                android:id="@+id/btn_spring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_btn_spring" />
+            <ImageButton
+                android:id="@+id/btn_summer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_btn_summer_black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_fall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_btn_fall_black" />
+
+            <ImageButton
+                android:id="@+id/btn_winter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_btn_winter_black" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.example.planter.MyPot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

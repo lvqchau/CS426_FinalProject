@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F4E0"
+    android:orientation="vertical"
+    tools:context=".PlantFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="430dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pop_med"
+                android:text="One tree is enough To change the world"
+                android:textColor="#36C1B6"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:fontFamily="@font/pop_reg"
+                android:text="Water trees to watch ads."
+                />
+
+            <TextView
+                android:layout_width="470dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pop_reg"
+                android:text="Money comes from ads will be funded towards saving trees ✿."
+                android:textSize="22sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_background"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pop_semibold"
+                android:text="Drag to water"
+                android:textColor="#F85C65"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="25dp"
+            >
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#DDB87E"
+                app:cardElevation="0dp"/>
+            <android.support.v7.widget.CardView
+                android:layout_width="25dp"
+                android:layout_height="7dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginVertical="3dp"
+                app:cardBackgroundColor="#7F9F2C"
+                app:cardElevation="0dp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="420dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/pop_reg"
+                android:text="You have planted"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/plant_count"
+                android:textColor="#9AC423"
+                android:textSize="18sp"
+                android:fontFamily="@font/pop_med"
+                android:layout_height="wrap_content"
+                android:text="168"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/pop_reg"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="trees"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:background="@null"
+                        android:id="@+id/btn_spring"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_btn_spring"
+                        android:layout_marginRight="10dp"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:background="@null"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_btn_summer_black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:background="@null"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_btn_fall_black"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:background="@null"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_btn_winter_black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

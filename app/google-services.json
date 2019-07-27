@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "783242833711",
+    "firebase_url": "https://planter-168.firebaseio.com",
+    "project_id": "planter-168",
+    "storage_bucket": "planter-168.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783242833711:android:794531e9f61f0cda",
+        "android_client_info": {
+          "package_name": "com.example.planter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783242833711-emm3o1u6ojd8thuh5gndlo0445st5o6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBvSFWypGVM8FtjnuknAy-aJ6NcKXtl4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783242833711-emm3o1u6ojd8thuh5gndlo0445st5o6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
