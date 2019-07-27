@@ -21,10 +21,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_5 = "Password";
 
     public static final String TABLE2_NAME = "plantUser";
-    public static final String COLUMN2_1 = "UserId";
+    public static final String COLUMN2_0 = "Id";
+    public static final String COLUMN2_1 = "Username";
     public static final String COLUMN2_2 = "Plant_count";
     public static final String COLUMN2_3 = "Ads_watched";
-
 
 
 
@@ -35,11 +35,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE registerUser (ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT NOT NULL UNIQUE, Firstname TEXT, Lastname TEXT, Email TEXT NOT NULL, Password TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE plantUser (ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT NOT NULL UNIQUE, Plant_count DEFAULT 0, Ads_watched DEFAULT 0, FOREIGN KEY (Username) REFERENCES registerUser(Username))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(" DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL(" DROP TABLE IF EXISTS " + TABLE2_NAME);
         onCreate(db);
     }
 
@@ -56,6 +58,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public long addPlantUser(String user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Username", user);
+        long res = db.insert("plantUser", null, contentValues);
+        db.close();
+        return res;
+    }
+
+//    public void updatePlantUser(SQLiteDatabase db, String user, int plant, int ad) {
+//        db.execSQL("UPGRADE plantUser SET Plant_count = " + plant + " AND Ads_watched = " + ad + " WHERE Username = " + user);
+//    }
+
     public boolean checkUser(String user, String pass) {
         String[] columns = {COLUMN_0};
         SQLiteDatabase db = this.getReadableDatabase();
@@ -71,11 +86,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public void listUsers(TextView textView) {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_NAME, null);
         textView.setText("");
         while (cursor.moveToNext()) {
             textView.append(cursor.getString(1) + " " + cursor.getString(2) + cursor.getString(3) + cursor.getString(4) + "\n");
+        }
+    }
+    public void listPlantUsers(TextView textView) {
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE2_NAME, null);
+        textView.setText("");
+        while (cursor.moveToNext()) {
+            textView.append(cursor.getString(1) + " " + cursor.getString(2) + cursor.getString(3) + "\n");
         }
     }
 }

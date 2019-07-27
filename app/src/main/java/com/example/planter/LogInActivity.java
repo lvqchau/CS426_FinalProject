@@ -34,7 +34,7 @@ public class LogInActivity extends AppCompatActivity {
 
     public LinearLayout loginLayout, signupLayout;
     public Button btnSignUp, btnLogIn, btnCheck, btnInsert, btnGo;
-
+    public String accountUsername;
     private TextView textView;
 
     DatabaseHelper db;
@@ -76,7 +76,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
 //                LogInActivity.this.startActivity(myIntent);
-                db.listUsers(textView);
+                db.listPlantUsers(textView);
             }
         });
         btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +89,7 @@ public class LogInActivity extends AppCompatActivity {
                     String first = textInputFirstname.getEditText().getText().toString().trim();
                     String last = textInputLastname.getEditText().getText().toString().trim();
                     long val = db.addUser(username, password, email, first, last);
+                    long val2 = db.addPlantUser(username);
                     if (val > 0) {
                         Toast.makeText(LogInActivity.this, "successful sign up", Toast.LENGTH_SHORT).show();
                     } else {
@@ -109,6 +110,7 @@ public class LogInActivity extends AppCompatActivity {
                     Boolean res = db.checkUser(username, password);
                     if (res) {
                         Toast.makeText(LogInActivity.this, "successful log in", Toast.LENGTH_SHORT).show();
+                        accountUsername = username;
                     } else {
                         Toast.makeText(LogInActivity.this, "log in fail", Toast.LENGTH_SHORT).show();
                     }
