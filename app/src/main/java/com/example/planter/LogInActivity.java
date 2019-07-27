@@ -2,6 +2,7 @@ package com.example.planter;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,8 +25,10 @@ public class LogInActivity extends AppCompatActivity {
 
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputUsername;
-    private TextInputLayout textInputFullname;
+    private TextInputLayout textInputFirstname;
+    private TextInputLayout textInputLastname;
     private TextInputLayout textInputPass;
+    private TextView textView;
 
     private TextInputLayout textInputUsernameLI;
     private TextInputLayout textInputPassLI;
@@ -39,16 +43,19 @@ public class LogInActivity extends AppCompatActivity {
 
 
         textInputEmail = findViewById(R.id.SU_email);
-        textInputFullname = findViewById(R.id.SU_name);
-        textInputUsername = findViewById(R.id.SU_username);
+        textInputFirstname = findViewById(R.id.SU_first);
+        textInputLastname = findViewById(R.id.SU_last);
 
+        textInputUsername = findViewById(R.id.SU_username);
+        textInputPass = findViewById(R.id.SU_pass);
         textInputPassLI = findViewById(R.id.LI_pass);
         textInputUsernameLI = findViewById(R.id.LI_username);
-
+        textView = findViewById(R.id.txt);
 
         btnCheck= findViewById(R.id.btnLogIn);
         btnInsert = findViewById(R.id.btnSignUp);
         btnGo = findViewById(R.id.btnApp);
+
         btnOnClick();
 
     }
@@ -57,8 +64,9 @@ public class LogInActivity extends AppCompatActivity {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
-                LogInActivity.this.startActivity(myIntent);
+//                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
+//                LogInActivity.this.startActivity(myIntent);
+                db.listUsers(textView);
             }
         });
         btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -105,16 +113,16 @@ public class LogInActivity extends AppCompatActivity {
         }
         return false;
     }
-    private boolean validateName() {
-        String firstInput = textInputFullname.getEditText().getText().toString().trim();
-        if (firstInput.isEmpty()) {
-            textInputFullname.setError("(*) Field can not be empty!");
-        } else {
-            textInputFullname.setError(null);
-            return true;
-        }
-        return false;
-    }
+//    private boolean validateName() {
+//        String firstInput = textInputFullname.getEditText().getText().toString().trim();
+//        if (firstInput.isEmpty()) {
+//            textInputFullname.setError("(*) Field can not be empty!");
+//        } else {
+//            textInputFullname.setError(null);
+//            return true;
+//        }
+//        return false;
+//    }
     private boolean validatePassword() {
         String passInput = textInputPass.getEditText().getText().toString().trim();
         if (passInput.isEmpty()) {
@@ -137,8 +145,9 @@ public class LogInActivity extends AppCompatActivity {
         String username = textInputUsername.getEditText().getText().toString().trim();
         String password = textInputPass.getEditText().getText().toString().trim();
         String email = textInputEmail.getEditText().getText().toString().trim();
-        String fullname = textInputFullname.getEditText().getText().toString().trim();
-        long val = db.addUser(username, password, email, fullname);
+        String first = textInputFirstname.getEditText().getText().toString().trim();
+        String last = textInputLastname.getEditText().getText().toString().trim();
+        long val = db.addUser(username, password, email, first, last);
         if (val > 0) {
             Toast.makeText(LogInActivity.this, "successful sign up", Toast.LENGTH_SHORT).show();
         } else {

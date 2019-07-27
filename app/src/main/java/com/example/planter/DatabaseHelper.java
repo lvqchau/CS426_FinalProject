@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -14,9 +15,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "registerUser";
     public static final String COLUMN_0 = "Id";
     public static final String COLUMN_1 = "Username";
-    public static final String COLUMN_2 = "Fullname";
-    public static final String COLUMN_3 = "Email";
-    public static final String COLUMN_4 = "Password";
+    public static final String COLUMN_2 = "Firstname";
+    public static final String COLUMN_3 = "Lastname";
+    public static final String COLUMN_4 = "Email";
+    public static final String COLUMN_5 = "Password";
 
     public static final String TABLE2_NAME = "plantUser";
     public static final String COLUMN2_1 = "UserId";
@@ -32,8 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE registerUser (ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT NOT NULL UNIQUE, Fullname TEXT, Email TEXT NOT NULL, Password TEXT NOT NULL)");
-
+        db.execSQL("CREATE TABLE registerUser (ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT NOT NULL UNIQUE, Firstname TEXT, Lastname TEXT, Email TEXT NOT NULL, Password TEXT NOT NULL)");
     }
 
     @Override
@@ -42,13 +43,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long addUser(String user, String pass, String email, String name) {
+    public long addUser(String user, String pass, String email, String first, String last) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Username", user);
         contentValues.put("Email", email);
+        contentValues.put("Firstname", first);
+        contentValues.put("Lastname", last);
         contentValues.put("Password", pass);
-        contentValues.put("Fullname", name);
         long res = db.insert("registerUser", null, contentValues);
         db.close();
         return res;
@@ -57,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean checkUser(String user, String pass) {
         String[] columns = {COLUMN_0};
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_1 + "=?" + " and " + COLUMN_4 + "=?";
+        String selection = COLUMN_1 + "=?" + " and " + COLUMN_5 + "=?";
         String[] selectionArgs = {user, pass};
         Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
@@ -67,6 +69,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         } else {
             return false;
+        }
+    }
+    public void listUsers(TextView textView) {
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        textView.setText("");
+        while (cursor.moveToNext()) {
+            textView.append(cursor.getString(1) + " " + cursor.getString(2) + cursor.getString(3) + cursor.getString(4) + "\n");
         }
     }
 }
