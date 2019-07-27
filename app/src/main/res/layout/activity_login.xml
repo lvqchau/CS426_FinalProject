@@ -28,186 +28,212 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="match_parent"
+                android:id="@+id/signup"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/topcorner"
+                android:drawableLeft="@drawable/ic_signup_selected"
+                android:drawablePadding="5dp"
                 android:fontFamily="@font/pop_med"
-                android:text="Sign Up" />
+                android:gravity="center_vertical|left"
+                android:paddingLeft="30dp"
+                android:stateListAnimator="@null"
+                android:text="Sign Up"
+                android:textColor="#000000" />
 
             <Button
-                android:layout_width="match_parent"
+                android:id="@+id/login"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/topcorner"
+                android:background="#ffffff"
                 android:fontFamily="@font/pop_med"
                 android:text="Log In"
-                android:textColor="#FFCE00" />
+                android:textColor="#8F8F8F"
+                android:gravity="center_vertical|left"
+                android:drawableLeft="@drawable/ic_login"
+                android:drawablePadding="5dp"
+                android:paddingLeft="35dp"
+                android:stateListAnimator="@null"
+                style="?android:attr/borderlessButtonStyle"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/signupcard"
+            android:background="#ffffff"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <!--<LinearLayout-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:id="@+id/LI_layout"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent">-->
-                    <!--<android.support.design.widget.TextInputLayout-->
-                        <!--android:id="@+id/LI_username"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--app:errorEnabled="true">-->
-                        <!--<android.support.design.widget.TextInputEditText-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:inputType="text"-->
-                            <!--android:hint="username"/>-->
-                    <!--</android.support.design.widget.TextInputLayout>-->
-
-                    <!--<android.support.design.widget.TextInputLayout-->
-                        <!--android:id="@+id/LI_pass"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--app:counterEnabled="true"-->
-                        <!--app:passwordToggleEnabled="true"-->
-                        <!--app:errorEnabled="true">-->
-                        <!--<android.support.design.widget.TextInputEditText-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:inputType="textPassword"-->
-                            <!--android:hint="password" />-->
-                    <!--</android.support.design.widget.TextInputLayout>-->
-                <!--</LinearLayout>-->
                 <LinearLayout
                     android:orientation="vertical"
-                    android:id="@+id/SU_layout"
+                    android:id="@+id/LI_layout"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <android.support.design.widget.TextInputLayout
-                        android:id="@+id/SU_username"
+                        android:id="@+id/LI_username"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         app:errorEnabled="true">
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:hint="username"/>
+                            android:textSize="15sp"
+                            android:hint="username"
+                            android:fontFamily="@font/pop_reg"/>
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
-                        android:id="@+id/SU_pass"
+                        android:id="@+id/LI_pass"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         app:counterEnabled="true"
-                        app:counterMaxLength="12"
                         app:passwordToggleEnabled="true"
                         app:errorEnabled="true">
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:hint="password" />
+                            android:textSize="15sp"
+                            android:hint="password"
+                            android:fontFamily="@font/pop_reg"/>
+                    </android.support.design.widget.TextInputLayout>
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:text="Check if in DB"
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/btnLogIn"
+                        android:background="#148807"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/SU_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/SU_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        app:errorEnabled="true">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="username"
+                            android:fontFamily="@font/pop_reg"
+                            android:inputType="text"
+                            android:textSize="15sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/SU_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="12"
+                        app:errorEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/SU_passEdit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="password"
+                            android:fontFamily="@font/pop_reg"
+                            android:inputType="textPassword"
+                            android:textSize="15sp" />
                     </android.support.design.widget.TextInputLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/SU_last"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
                             app:errorEnabled="true">
+
                             <android.support.design.widget.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:hint="lastname"
+                                android:fontFamily="@font/pop_reg"
                                 android:inputType="textPersonName"
-                                android:hint="lastname"/>
+                                android:textSize="15sp" />
                         </android.support.design.widget.TextInputLayout>
+
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/SU_first"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
                             app:errorEnabled="true">
+
                             <android.support.design.widget.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:hint="firstname"
+                                android:fontFamily="@font/pop_reg"
                                 android:inputType="textPersonName"
-                                android:hint="firstname"/>
+                                android:textSize="15sp" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/SU_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         app:errorEnabled="true">
+
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="email"
+                            android:fontFamily="@font/pop_reg"
                             android:inputType="textEmailAddress"
-                            android:hint="email"/>
-                    </android.support.design.widget.TextInputLayout>
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/LI_username"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true">
-                        <android.support.design.widget.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:hint="username"/>
+                            android:textSize="15sp" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/LI_pass"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:counterEnabled="true"
-                        app:passwordToggleEnabled="true"
-                        app:errorEnabled="true">
-                        <android.support.design.widget.TextInputEditText
-                            android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btnSignUp"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="#C54E4E"
+                            android:text="Insert into DB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:hint="password" />
-                    </android.support.design.widget.TextInputLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/txt"/>
+                            android:fontFamily="@font/pop_med"
+                            android:text="Already have an account?"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
-
+                <TextView
+                    android:layout_marginTop="300dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt"/>
             </RelativeLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="Insert into DB"
-                android:layout_marginHorizontal="15dp"
-                android:id="@+id/btnSignUp"
-                android:background="#C54E4E"/>
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="Check if in DB"
-                android:layout_marginHorizontal="15dp"
-                android:id="@+id/btnLogIn"
-                android:background="#148807"
-                />
-
-        </LinearLayout>
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
