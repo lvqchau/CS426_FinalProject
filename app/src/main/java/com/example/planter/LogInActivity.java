@@ -1,31 +1,17 @@
 package com.example.planter;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.util.List;
-
 public class LogInActivity extends AppCompatActivity {
-
     private TextInputLayout textInputUsername, textInputUsernameLI;
     private TextInputLayout textInputPass, textInputPassLI;
     private TextInputLayout textInputEmail;
@@ -34,7 +20,6 @@ public class LogInActivity extends AppCompatActivity {
 
     public LinearLayout loginLayout, signupLayout;
     public Button btnSignUp, btnLogIn, btnCheck, btnInsert, btnGo;
-    public String accountUsername;
     private TextView textView;
 
     DatabaseHelper db;
@@ -74,8 +59,6 @@ public class LogInActivity extends AppCompatActivity {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
-//                LogInActivity.this.startActivity(myIntent);
                 db.listPlantUsers(textView);
             }
         });
@@ -92,6 +75,9 @@ public class LogInActivity extends AppCompatActivity {
                     long val2 = db.addPlantUser(username);
                     if (val > 0) {
                         Toast.makeText(LogInActivity.this, "successful sign up", Toast.LENGTH_SHORT).show();
+                        switchLayoutOnLaunch(btnLogIn, btnSignUp, loginLayout, signupLayout);
+                        textInputUsernameLI.getEditText().setText(username);
+                        textInputPassLI.getEditText().setText(password);
                     } else {
                         Toast.makeText(LogInActivity.this, "sign up fail", Toast.LENGTH_SHORT).show();
                     }
@@ -110,7 +96,9 @@ public class LogInActivity extends AppCompatActivity {
                     Boolean res = db.checkUser(username, password);
                     if (res) {
                         Toast.makeText(LogInActivity.this, "successful log in", Toast.LENGTH_SHORT).show();
-                        accountUsername = username;
+                        Intent myIntent = new Intent(LogInActivity.this, MainActivity.class);
+                        myIntent.putExtra("Username", username);
+                        startActivity(myIntent);
                     } else {
                         Toast.makeText(LogInActivity.this, "log in fail", Toast.LENGTH_SHORT).show();
                     }

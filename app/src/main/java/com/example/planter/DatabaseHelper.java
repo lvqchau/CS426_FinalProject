@@ -7,9 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String TAG = "hello";
 
     public static final String DATABASE_NAME = "Planter.db";
     public static final String TABLE_NAME = "registerUser";
@@ -67,9 +66,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-//    public void updatePlantUser(SQLiteDatabase db, String user, int plant, int ad) {
-//        db.execSQL("UPGRADE plantUser SET Plant_count = " + plant + " AND Ads_watched = " + ad + " WHERE Username = " + user);
-//    }
+    public void updatePlantCount(String user, int plant) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Plant_count", plant);
+        db.update("plantUser", contentValues, "Username = '" + user + "'", null);
+    }
+
+    public void updateAdsWatched(String user, int ad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Ads_watched", ad);
+        db.update("plantUser", contentValues, "Username = '" + user + "'", null);
+    }
 
     public boolean checkUser(String user, String pass) {
         String[] columns = {COLUMN_0};
@@ -94,6 +103,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             textView.append(cursor.getString(1) + " " + cursor.getString(2) + cursor.getString(3) + cursor.getString(4) + "\n");
         }
     }
+
+    public int getAdsWatched(String user) {
+        String res = "";
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE2_NAME + " WHERE Username = '" + user + "'", null);
+        while (cursor.moveToNext()) {
+            res = cursor.getString(3);
+        }
+        cursor.close();
+        return Integer.parseInt(res);
+    }
+
+    public int getPlantCount(String user) {
+        String res = "";
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE2_NAME + " WHERE Username = '" + user + "'", null);
+        while (cursor.moveToNext()) {
+            res = cursor.getString(2);
+        }
+        cursor.close();
+        return Integer.parseInt(res);
+    }
+
     public void listPlantUsers(TextView textView) {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM " + TABLE2_NAME, null);
         textView.setText("");

@@ -24,36 +24,38 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.content.ContentValues.TAG;
-import static android.os.SystemClock.sleep;
-//phải save state của
-//checkSeason => gán lại drawable
-//countPotWatering => gán lại gif
-//total => gán lại total trong layout
+
 public class MyPot extends View {
     PlantFragment plantFragment;
+    DatabaseHelper db;
+    TextView total; //number of plants planted
+
     private TimerTask timerTask, timerTaskPlant;
     private ArrayList<MySprite> sprites, spritesPlant;
-
     private Timer timer;
+
     private int countPotWatering = 0;
+    private int adsWatched = 0;
     private int checkSeason = 1;
     private int totalPlant = 0;
-    private boolean checkWatering = false;
 
+    CardView cardView;
+    ImageButton btnSpring, btnFall, btnWinter, btnSummer;
+
+    private boolean checkWatering = false;
     private boolean bDrag = false;
     private int selectedSpriteIndex = -1;
     private float oldX, oldY;
     private boolean bFloat = false;
-    final Handler handler = new Handler();
-    Runnable r = new Runnable() {
-        public void run() {
-            showInterstitial();
-        }
-    };
-
+    String usernameAccount;
     public MyPot(Context context, AttributeSet attrs) {
         super(context, attrs);
+        usernameAccount = MainActivity.usernameAccount;
+        db = new DatabaseHelper(this.getRootView().getContext().getApplicationContext());
+
+        adsWatched = db.getAdsWatched(usernameAccount);
+        totalPlant = db.getPlantCount(usernameAccount);
+//        total.setText(totalPlant);
 
         sprites = new ArrayList<>();
         spritesPlant = new ArrayList<>();
@@ -185,8 +187,9 @@ public class MyPot extends View {
             }
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP: {
-                Log.d(TAG, "this is boolean" + countPotWatering);
                 countPotWatering++;
+                adsWatched++;
+                db.updateAdsWatched(usernameAccount, adsWatched);
                 //NEED TO CHECK IF HAS WATERED 8 TIMES YET -- MAYBE CHECK COLOR OF ID.PLANT8 OR COUNTPOTWATERING
                 //SOMETHING HERE
 
@@ -195,7 +198,6 @@ public class MyPot extends View {
                     for (int i = 0; i < spritesPlant.size(); i++) {
                         spritesPlant.remove(spritesPlant.get(i));
                     }
-                    CardView cardView;
                     switch (countPotWatering) {
                         case 1:
                             spritesPlant.add(Plant1);
@@ -228,12 +230,15 @@ public class MyPot extends View {
                             spritesPlant.add(Plant0);
                             checkSeason++;
                             totalPlant++;
-                            TextView total = this.getRootView().findViewById(R.id.total_plant_count);
+
+                            db.updatePlantCount(usernameAccount, totalPlant);
+                            total = this.getRootView().findViewById(R.id.total_plant_count);
                             total.setText(Integer.toString(totalPlant));
-                            ImageButton btnSpring = this.getRootView().findViewById(R.id.btn_spring);
-                            ImageButton btnFall = this.getRootView().findViewById(R.id.btn_fall);
-                            ImageButton btnWinter = this.getRootView().findViewById(R.id.btn_winter);
-                            ImageButton btnSummer = this.getRootView().findViewById(R.id.btn_summer);
+
+                            btnSpring = this.getRootView().findViewById(R.id.btn_spring);
+                            btnFall = this.getRootView().findViewById(R.id.btn_fall);
+                            btnWinter = this.getRootView().findViewById(R.id.btn_winter);
+                            btnSummer = this.getRootView().findViewById(R.id.btn_summer);
                             for (int i = 1; i<5; i++) {
                                 String plant = "plant" + i;
                                 int resID = getResources().getIdentifier(plant, "id", "com.example.planter");

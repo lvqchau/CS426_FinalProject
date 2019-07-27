@@ -201,29 +201,13 @@
                             android:textSize="15sp" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btnSignUp"
-                            android:layout_width="150dp"
-                            android:layout_height="50dp"
-                            android:layout_marginHorizontal="15dp"
-                            android:background="#C54E4E"
-                            android:text="Insert into DB" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/pop_med"
-                            android:text="Already have an account?"
-                            android:textSize="15sp" />
-
-                    </LinearLayout>
-
+                    <Button
+                        android:id="@+id/btnSignUp"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="15dp"
+                        android:background="#C54E4E"
+                        android:text="Insert into DB" />
                 </LinearLayout>
                 <TextView
                     android:layout_marginTop="300dp"
@@ -231,9 +215,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt"/>
             </RelativeLayout>
-
         </LinearLayout>
-
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"

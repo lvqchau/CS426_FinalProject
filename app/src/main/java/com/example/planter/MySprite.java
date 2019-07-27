@@ -4,9 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-/**
- * Created by MinhTrietTRAN on 7/11/2016.
- */
 public class MySprite {
     public int nBMPs;
     public int iBMP;
